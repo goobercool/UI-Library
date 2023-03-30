@@ -1,0 +1,51 @@
+-- Define the Button class
+local Button = {}
+Button.__index = Button
+
+function Button.new(text)
+  local self = setmetatable({}, Button)
+  self.text = text
+  self.onClick = nil
+  self.guiObject = Instance.new("TextButton")
+  self.guiObject.Text = text
+  return self
+end
+
+function Button:setOnClick(callback)
+  self.onClick = callback
+  self.guiObject.MouseButton1Click:Connect(callback)
+end
+
+function Button:setPosition(x, y)
+  self.guiObject.Position = UDim2.new(x, 0, y, 0)
+end
+
+function Button:setSize(width, height)
+  self.guiObject.Size = UDim2.new(width, 0, height, 0)
+end
+
+-- Define the Label class
+local Label = {}
+Label.__index = Label
+
+function Label.new(text)
+  local self = setmetatable({}, Label)
+  self.text = text
+  self.guiObject = Instance.new("TextLabel")
+  self.guiObject.Text = text
+  return self
+end
+
+function Label:setPosition(x, y)
+  self.guiObject.Position = UDim2.new(x, 0, y, 0)
+end
+
+function Label:setSize(width, height)
+  self.guiObject.Size = UDim2.new(width, 0, height, 0)
+end
+
+-- Export the module
+local UI = {}
+UI.Button = Button
+UI.Label = Label
+return UI
