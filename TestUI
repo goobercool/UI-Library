@@ -1,3 +1,8 @@
+-- Create The ScreenGui
+local screengui = Instance.new("ScreenGui")
+screengui.Parent = game.Players.LocalPlayer.PlayerGui
+screengui.Name = "TestUI"
+
 -- Define the Button class
 local Button = {}
 Button.__index = Button
