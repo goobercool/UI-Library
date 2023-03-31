@@ -10,32 +10,34 @@ Lib.__index = Lib
 function Lib.new(text)
 
 local screengui = Instance.new("ScreenGui")
-local frame = Instance.new("Frame", screengui)
-local scrollingframe = Instance.new("ScrollingFrame", frame)
-local textlabel = Instance.new("TextLabel", frame)
+local frame = Instance.new("Frame")
+local scrollingframe = Instance.new("ScrollingFrame")
+local textlabel = Instance.new("TextLabel")
 screengui.Parent = game.Players.LocalPlayer.PlayerGui
+frame.Parent = screengui
+scrollingframe.Parent = frame
+textlabel.Parent = frame
 screengui.Name = text
 frame.Name = text
 scrollingframe.Name = "Pages"
 textlabel.Name = text
 
 frame.Size = UDim2.new(0, 415, 0, 400)
-frame.Position = Vector3.new(0.405, 0, 0.345, 0)
-frame.ZIndex = 10
+frame.Position = UDim2.new(0.405, 0, 0.345, 0)
+frame.ZIndex = 1
 
 scrollingframe.Size = UDim2.new(0, 140, 0, 400)
-scrollingframe.Position = Vector3.new(-0.338, 0, 0.345, 0)
+scrollingframe.Position = UDim2.new(-0.338, 0, 0, 0)
 scrollingframe.CanvasSize = UDim2.new(0, 0, 0, 0)
 scrollingframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
-textlabel.Position = Vector3.new(-0.338, 0, -0.075, 0)
+textlabel.Position = UDim2.new(-0.338, 0, -0.075, 0)
 textlabel.Size =  UDim2.new(0, 555, 0, 30)
 textlabel.TextScaled = true
-
+textlabel.Text = text
 
   return frame
 end
-
 
 
 -- Define the Button class
