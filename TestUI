@@ -2,23 +2,27 @@
 local screengui = Instance.new("ScreenGui")
 screengui.Parent = game.Players.LocalPlayer.PlayerGui
 screengui.Name = "TestUI"
+local Lib = {}
+Lib.__index = Lib
+
+
+
+
+
 
 -- Define the Button class
 local Button = {}
 Button.__index = Button
 
-function Button.new(text)
+function Button.new(text, callback)
   local self = setmetatable({}, Button)
   self.text = text
   self.onClick = nil
   self.guiObject = Instance.new("TextButton")
   self.guiObject.Text = text
-  return self
-end
-
-function Button:setOnClick(callback)
-  self.onClick = callback
   self.guiObject.MouseButton1Click:Connect(callback)
+  
+  return self
 end
 
 function Button:setPosition(x, y)
