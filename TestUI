@@ -1,7 +1,7 @@
 local UI = {}
 
 -- Define functions for creating UI elements
-function UI.newLib(text)
+function UI:newLib(text)
   
   local lib = {
   
