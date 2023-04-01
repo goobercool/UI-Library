@@ -1,90 +1,44 @@
--- Create The ScreenGui
-local screengui = Instance.new("ScreenGui")
-screengui.Parent = game.Players.LocalPlayer.PlayerGui
-screengui.Name = "TestUI"
-local Lib = {}
-Lib.__index = Lib
-
-
-
-function Lib.new(text)
-
-local screengui = Instance.new("ScreenGui")
-local frame = Instance.new("Frame")
-local scrollingframe = Instance.new("ScrollingFrame")
-local textlabel = Instance.new("TextLabel")
-screengui.Parent = game.Players.LocalPlayer.PlayerGui
-frame.Parent = screengui
-scrollingframe.Parent = frame
-textlabel.Parent = frame
-screengui.Name = text
-frame.Name = text
-scrollingframe.Name = "Pages"
-textlabel.Name = text
-
-frame.Size = UDim2.new(0, 415, 0, 400)
-frame.Position = UDim2.new(0.405, 0, 0.345, 0)
-frame.ZIndex = 1
-
-scrollingframe.Size = UDim2.new(0, 140, 0, 400)
-scrollingframe.Position = UDim2.new(-0.338, 0, 0, 0)
-scrollingframe.CanvasSize = UDim2.new(0, 0, 0, 0)
-scrollingframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
-
-textlabel.Position = UDim2.new(-0.338, 0, -0.075, 0)
-textlabel.Size =  UDim2.new(0, 555, 0, 30)
-textlabel.TextScaled = true
-textlabel.Text = text
-
-  return frame
-end
-
-
--- Define the Button class
-local Button = {}
-Button.__index = Button
-
-function Button.new(text, callback)
-  local self = setmetatable({}, Button)
-  self.text = text
-  self.onClick = nil
-  self.guiObject = Instance.new("TextButton")
-  self.guiObject.Text = text
-  self.guiObject.MouseButton1Click:Connect(callback)
-  
-  return self
-end
-
-function Button:setPosition(x, y)
-  self.guiObject.Position = UDim2.new(x, 0, y, 0)
-end
-
-function Button:setSize(width, height)
-  self.guiObject.Size = UDim2.new(width, 0, height, 0)
-end
-
--- Define the Label class
-local Label = {}
-Label.__index = Label
-
-function Label.new(text)
-  local self = setmetatable({}, Label)
-  self.text = text
-  self.guiObject = Instance.new("TextLabel")
-  self.guiObject.Text = text
-  return self
-end
-
-function Label:setPosition(x, y)
-  self.guiObject.Position = UDim2.new(x, 0, y, 0)
-end
-
-function Label:setSize(width, height)
-  self.guiObject.Size = UDim2.new(width, 0, height, 0)
-end
-
--- Export the module
 local UI = {}
-UI.Button = Button
-UI.Label = Label
-return UI
+
+-- Define functions for creating UI elements
+function UI.newLib(text)
+  
+  local lib = {
+  
+  screengui = Instance.new("ScreenGui")
+  
+  frame = Instance.new("Frame")
+  
+  scrollingframe = Instance.new("ScrollingFrame")
+  
+  textlabel = Instance.new("TextLabel")
+  
+  }
+  
+  screengui.Parent = game.Players.LocalPlayer.PlayerGui
+lib.frame.Parent = screengui
+lib.scrollingframe.Parent = frame
+lib.textlabel.Parent = frame
+lib.screengui.Name = text
+lib.frame.Name = text
+lib.scrollingframe.Name = "Pages"
+lib.textlabel.Name = text
+  
+lib.frame.Size = UDim2.new(0, 415, 0, 400)
+lib.frame.Position = UDim2.new(0.405, 0, 0.345, 0)
+lib.frame.ZIndex = 1  
+  
+lib.scrollingframe.Size = UDim2.new(0, 140, 0, 400)
+lib.scrollingframe.Position = UDim2.new(-0.338, 0, 0, 0)
+lib.scrollingframe.CanvasSize = UDim2.new(0, 0, 0, 0)
+lib.scrollingframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
+  
+lib.textlabel.Position = UDim2.new(-0.338, 0, -0.075, 0)
+lib.textlabel.Size =  UDim2.new(0, 555, 0, 30)
+lib.textlabel.TextScaled = true
+lib.textlabel.Text = text
+  
+  
+  return lib
+end
+
