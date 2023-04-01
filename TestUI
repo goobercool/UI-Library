@@ -1,10 +1,4 @@
 local UI = {}
-
--- Define functions for creating UI elements
-function UI:newLib(text)
-  
-  local lib = {
-  
   screengui = Instance.new("ScreenGui")
   
   frame = Instance.new("Frame")
@@ -13,32 +7,27 @@ function UI:newLib(text)
   
   textlabel = Instance.new("TextLabel")
   
-  }
+screengui.Parent = game.Players.LocalPlayer.PlayerGui
+frame.Parent = screengui
+scrollingframe.Parent = frame
+textlabel.Parent = frame
+screengui.Name = text
+frame.Name = text
+scrollingframe.Name = "Pages"
+textlabel.Name = text
   
-  screengui.Parent = game.Players.LocalPlayer.PlayerGui
-lib.frame.Parent = screengui
-lib.scrollingframe.Parent = frame
-lib.textlabel.Parent = frame
-lib.screengui.Name = text
-lib.frame.Name = text
-lib.scrollingframe.Name = "Pages"
-lib.textlabel.Name = text
+frame.Size = UDim2.new(0, 415, 0, 400)
+frame.Position = UDim2.new(0.405, 0, 0.345, 0)
+frame.ZIndex = 1  
   
-lib.frame.Size = UDim2.new(0, 415, 0, 400)
-lib.frame.Position = UDim2.new(0.405, 0, 0.345, 0)
-lib.frame.ZIndex = 1  
+scrollingframe.Size = UDim2.new(0, 140, 0, 400)
+scrollingframe.Position = UDim2.new(-0.338, 0, 0, 0)
+scrollingframe.CanvasSize = UDim2.new(0, 0, 0, 0)
+scrollingframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
   
-lib.scrollingframe.Size = UDim2.new(0, 140, 0, 400)
-lib.scrollingframe.Position = UDim2.new(-0.338, 0, 0, 0)
-lib.scrollingframe.CanvasSize = UDim2.new(0, 0, 0, 0)
-lib.scrollingframe.AutomaticCanvasSize = Enum.AutomaticSize.Y
-  
-lib.textlabel.Position = UDim2.new(-0.338, 0, -0.075, 0)
-lib.textlabel.Size =  UDim2.new(0, 555, 0, 30)
-lib.textlabel.TextScaled = true
-lib.textlabel.Text = text
-  
-  
-  return lib
-end
+textlabel.Position = UDim2.new(-0.338, 0, -0.075, 0)
+textlabel.Size =  UDim2.new(0, 555, 0, 30)
+textlabel.TextScaled = true
+textlabel.Text = text
+
 
